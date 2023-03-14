@@ -12,13 +12,13 @@ Layered architecture
 #로그인 관리 \
 Spring Security + JWT 사용 예정
 
-#CICD \
+#CICD
 
-#TDD \
+#TDD
 
-#Storage \
+#Storage
 
-#nGrinder \
+#nGrinder
 
 #APM \
 scouter
