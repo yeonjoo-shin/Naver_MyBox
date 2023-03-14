@@ -1,0 +1,26 @@
+repositories {
+    mavenCentral()
+}
+
+apply plugin: 'java'
+apply plugin: 'java-library'
+group 'com.numble'
+
+// 모든 소스세트의 인코딩을 지정하기
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+// 컴파일할 때 적용할 자바 jdk 버전을 지정.
+sourceCompatibility = 17
+// 컴파일할 때 생성하는 클래스 파일의 jdk 버전을 지정.
+targetCompatibility = 17
+
+dependencies {
+    def lombokVersion = '1.18.22'
+    // lombok
+    compileOnly "org.projectlombok:lombok:$lombokVersion"
+    annotationProcessor "org.projectlombok:lombok:$lombokVersion"
+    testCompileOnly "org.projectlombok:lombok:$lombokVersion"
+    testAnnotationProcessor "org.projectlombok:lombok:$lombokVersion"
+}

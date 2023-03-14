@@ -1,0 +1,4 @@
+rootProject.name = 'Naver_MyBox'
+include 'core'
+include 'api'
+

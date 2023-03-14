@@ -1,0 +1,4 @@
+subprojects {
+    apply from: "${project.getRootDir()}/gradle/common.gradle"
+    //apply from: "${project.getRootDir()}/gradle/unit.test.gradle"
+}

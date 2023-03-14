@@ -1,0 +1,35 @@
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 5MB
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+server:
+  port: 8081
+  servlet:
+    context-path: /
+  error:
+    whitelabel:
+      enabled : true
+    path: /error
+    include-message: always
+active:
+  server: local
+  max-http-header-size: 0
+
+
+springfox:
+  documentation:
+    swaggerUi:
+      baseUrl: /app
+    openApi:
+      v3:
+        path: /app/v3/api-docs
+    swagger:
+      v2:
+        path: /app/v2/api-docs

@@ -1,0 +1,40 @@
+plugins {
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+}
+
+group 'com.numble'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+//    api 'commons-beanutils:commons-beanutils:1.9.4'
+//    api 'commons-io:commons-io:2.6'
+//    api 'commons-codec:commons-codec:1.10'
+//    api 'org.apache.commons:commons-configuration2:2.4'
+//    api 'com.github.ua-parser:uap-java:1.4.3'
+
+    // jUnit 의존성
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+}
+
+dependencyManagement {
+    imports {
+        mavenBom 'org.springframework.cloud:spring-cloud-dependencies:2021.0.1'
+    }
+}
+
+test {
+    useJUnitPlatform()
+}
+
+tasks {
+    processResources {
+        duplicatesStrategy = org.gradle.api.file.DuplicatesStrategy.INCLUDE
+    }
+}
