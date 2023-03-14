@@ -5,20 +5,20 @@ JAVA 17
 SpringBoot 2.6.3
 Gradle 7.2
 
-#아키텍쳐 \n
+#아키텍쳐 \
 Multi Module
 Layered architecture
 
-#로그인 관리 \n
+#로그인 관리 \
 Spring Security + JWT 사용 예정
 
-#CICD \n
+#CICD \
 
-#TDD \n
+#TDD \
 
-#Storage \n
+#Storage \
 
-#nGrinder \n
+#nGrinder \
 
-#APM \n
+#APM \
 scouter
