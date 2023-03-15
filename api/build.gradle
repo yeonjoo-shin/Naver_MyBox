@@ -26,6 +26,9 @@ dependencies {
     // jUnit 의존성
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+
+    // security 의존성
+    implementation 'org.springframework.boot:spring-boot-starter-security'
 }
 
 dependencyManagement {
