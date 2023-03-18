@@ -18,6 +18,7 @@ dependencies {
     }
 
     implementation project(":core")
+    //implementation project(":mybatis")
 
     implementation 'org.springframework.boot:spring-boot-starter-undertow'
     implementation 'io.springfox:springfox-boot-starter:3.0.0'

@@ -1,4 +1,4 @@
-package com.numble.response;
+package com.numble.domain.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -6,6 +6,8 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public enum StatusCode {
+
+    USER_DB_ERROR( 502,"USER-ERR-502","유저 DB 에러"),
 
     //Success Status
     SUCCESS_INSERT(200, "", "등록 성공 하였습니다."),

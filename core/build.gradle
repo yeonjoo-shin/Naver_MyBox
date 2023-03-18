@@ -18,6 +18,13 @@ dependencies {
 //    api 'org.apache.commons:commons-configuration2:2.4'
 //    api 'com.github.ua-parser:uap-java:1.4.3'
 
+    // mybatis 의존성
+    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.2'
+    runtimeOnly 'mysql:mysql-connector-java:8.0.25'
+
+    api 'org.mybatis:mybatis:3.5.1'
+    api 'com.zaxxer:HikariCP:3.4.2'
+
     // jUnit 의존성
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'

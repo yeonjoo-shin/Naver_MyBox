@@ -1,4 +1,4 @@
-package com.numble.response;
+package com.numble.domain.response;
 
 import lombok.Data;
 

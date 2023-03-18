@@ -1,5 +1,7 @@
 package com.numble.config;
 
+import com.numble.security.JwtAccessDeniedHandler;
+import com.numble.security.JwtAuthenticationEntryPoint;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,6 +17,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @RequiredArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+    private final JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
+    private final JwtAccessDeniedHandler jwtAccessDeniedHandler;
+
     @Bean
     public PasswordEncoder passwordEncoder() { return new BCryptPasswordEncoder();}
 
@@ -23,8 +28,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable()           // csrf 보안 필요없으므로 disable 처리
 
                 .exceptionHandling()
-//                .authenticationEntryPoint()
-//                .accessDeniedHandler()
+                .authenticationEntryPoint(jwtAuthenticationEntryPoint)
+                .accessDeniedHandler(jwtAccessDeniedHandler)
 
                 // h2 console을 위한 설정
                 .and()
@@ -38,9 +43,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 
+                // 로그인, 회원가입 API는 토큰이 없는 상태에서 요청이 들어오므로 permitAll 설정
+                // 나머지는 API는 인증 필요
                 .and()
                 .authorizeRequests()
-                .antMatchers().permitAll()
+                .antMatchers(PERMIT_URL_ARRAY).permitAll()
                 .anyRequest()
                 .authenticated()
 
@@ -48,4 +55,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .apply(new JwtSecurityConfig());
     }
+
+    private static final String[] PERMIT_URL_ARRAY = {
+            "/v2/api-docs",
+            "/swagger-resources",
+            "/swagger-resources/**",
+            "/configuration/ui",
+            "/configuration/security",
+            "/swagger-ui.html",
+            "/api/auth/**",
+            "/**/swagger-*/**",
+            "/**/v2/**",
+            "/**/system/healthCheck",
+            "/error"
+    };
 }
