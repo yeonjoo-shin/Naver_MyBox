@@ -1,16 +1,5 @@
 server:
   port: 6036
-spring:
-  devtools:
-    livereload:
-      enabled: true
-  datasource:
-    hikari:
-      driver-class-name: com.mysql.cj.jdbc.Driver
-      jdbc-url: jdbc:mysql://175.125.177.207:6036/MYBOX?autoReconnect=true
-      username: root
-      password: svc123$%^
-      mapper-locations: classpath:/mapper/**/*.xml
 
 mybatis:
   configuration:
