@@ -18,6 +18,8 @@
 *.ipr
 *.iws
 *.MANIFEST.MF
+*.yml
+application.properties
 
 # gradle
 /.gradle/
