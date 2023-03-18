@@ -9,13 +9,13 @@ spring:
     pathmatch:
       matching-strategy: ant_path_matcher
   datasource:
-    hikari:
       driver-class-name: com.mysql.cj.jdbc.Driver
-      jdbc-url: jdbc:mysql://175.125.177.207:6036/MYBOX?autoReconnect=true
+      url: jdbc:mysql://175.125.177.207:6036/MYBOX?autoReconnect=true
       username: root
-      password:
+      password: svc123$%^
       mapper-locations: classpath:/mapper/**/*.xml
-
+mybatis:
+  config-location: classpath:/mybatis/mybatis-config.xml
 
 server:
   port: 8081

@@ -30,7 +30,7 @@ public class AuthController {
             , notes = "유저 정보를 조회하여 제공합니다.")
     @GetMapping(value = "/userInfo",produces = "application/json")
     public ResponseEntity<CommonResponse<Object>> getUserInfo() {
-        return ResponseEntity.ok().body(new CommonResponse<>( "서비스단", StatusCode.SUCCESS_SELECT));
+        return ResponseEntity.ok().body(new CommonResponse<>( securityService.getApiUser("yj"), StatusCode.SUCCESS_SELECT));
     }
 
 

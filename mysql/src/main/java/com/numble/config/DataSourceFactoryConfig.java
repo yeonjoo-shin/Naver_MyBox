@@ -16,8 +16,8 @@ public class DataSourceFactoryConfig {
     private SqlSessionFactory sqlSessionFactory;
     private String pathInfo;
 
-    public  DataSourceFactoryConfig(String pathInfo) {
-        this.pathInfo = "application.yml";
+    public  DataSourceFactoryConfig() {
+        this.pathInfo = "mybatis/mybatis-config.xml";
         this.sqlSessionFactory = getSessionFactory();
     }
     public SqlSessionFactory getSessionFactory() {
