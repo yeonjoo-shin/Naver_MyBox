@@ -8,6 +8,11 @@
         <setting name="mapUnderscoreToCamelCase" value="true" />
     </settings>
 
+    <typeAliases>
+        <typeAlias alias="AuthUserVO" type="com.numble.vo.AuthUserVO"/>
+        <typeAlias alias="UserAuthReq" type="com.numble.domain.request.UserAuthReq"/>
+    </typeAliases>
+
     <mappers>
         <mapper resource="mapper/mapper-seek.xml"></mapper>
         <mapper resource="mapper/mapper-collect.xml"></mapper>

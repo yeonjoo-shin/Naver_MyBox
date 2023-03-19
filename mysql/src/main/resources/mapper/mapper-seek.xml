@@ -2,8 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.numble.persister.MyBoxSeekPersister">
 
-    <select id="getApiUser" resultType="com.numble.vo.AuthUserVO">
-        SELECT * FROM User;
+    <select id="getApiUser" resultType="AuthUserVO" parameterType="string">
+        SELECT u.USER_ID as userName
+             , u.SECRET_KEY as password
+        FROM User u
+        WHERE u.USER_ID = #{userName} and u.DELETE_YN = 'N'
     </select>
 
 

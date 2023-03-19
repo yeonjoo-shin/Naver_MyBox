@@ -26,11 +26,17 @@ public class AuthController {
         return ResponseEntity.ok().body(new CommonResponse<>(StatusCode.SUCCESS_INSERT));
     }
 
+    @ApiOperation(value = "로그인")
+    @PostMapping(value = "/login")
+    public ResponseEntity<CommonResponse<Object>> login(@RequestBody UserAuthReq userAuthReq) {
+        return ResponseEntity.ok().body(new CommonResponse<>(securityService.login(userAuthReq),StatusCode.SUCCESS_SELECT));
+    }
+
     @ApiOperation(value = "유저 정보"
             , notes = "유저 정보를 조회하여 제공합니다.")
     @GetMapping(value = "/userInfo",produces = "application/json")
-    public ResponseEntity<CommonResponse<Object>> getUserInfo() {
-        return ResponseEntity.ok().body(new CommonResponse<>( securityService.getApiUser("yj"), StatusCode.SUCCESS_SELECT));
+    public ResponseEntity<CommonResponse<Object>> getUserInfo(@RequestParam String userName) {
+        return ResponseEntity.ok().body(new CommonResponse<>( securityService.getApiUser(userName), StatusCode.SUCCESS_SELECT));
     }
 
 

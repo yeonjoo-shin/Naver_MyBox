@@ -2,6 +2,18 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.numble.persister.MyBoxCollectPersister">
 
+    <insert id="registerUser" parameterType="UserAuthReq">
+        INSERT INTO User (
+                          USER_ID,
+                          SECRET_KEY,
+                          REG_DATE
+        ) VALUES (
+                  #{userName},
+                  #{password},
+                  NOW()
+                        )
+    </insert>
+
 
 
 

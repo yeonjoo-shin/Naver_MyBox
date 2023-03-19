@@ -2,6 +2,7 @@ package com.numble.config;
 
 import com.numble.security.JwtAccessDeniedHandler;
 import com.numble.security.JwtAuthenticationEntryPoint;
+import com.numble.security.TokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,6 +20,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
     private final JwtAccessDeniedHandler jwtAccessDeniedHandler;
+
+    private final TokenProvider tokenProvider;
 
     @Bean
     public PasswordEncoder passwordEncoder() { return new BCryptPasswordEncoder();}
@@ -53,7 +56,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
                 // JWTFilter를  addFilterBefore로 등록했던  JwtSecurityConfig 클래스 적용
                 .and()
-                .apply(new JwtSecurityConfig());
+                .apply(new JwtSecurityConfig(tokenProvider));
     }
 
     private static final String[] PERMIT_URL_ARRAY = {

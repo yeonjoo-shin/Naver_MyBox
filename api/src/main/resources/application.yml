@@ -12,7 +12,7 @@ spring:
       driver-class-name: com.mysql.cj.jdbc.Driver
       url: jdbc:mysql://175.125.177.207:6036/MYBOX?autoReconnect=true
       username: root
-      password: svc123$%^
+      password:
       mapper-locations: classpath:/mapper/**/*.xml
 mybatis:
   config-location: classpath:/mybatis/mybatis-config.xml
@@ -34,10 +34,13 @@ active:
 springfox:
   documentation:
     swaggerUi:
-      baseUrl: /app
+      baseUrl: /
     openApi:
       v3:
-        path: /app/v3/api-docs
+        path: /v3/api-docs
     swagger:
       v2:
-        path: /app/v2/api-docs
+        path: /v2/api-docs
+
+jwt:
+  secret: A393XQDtRi5liCxxBHvPySyRyp7VtJ2ZL2zpoHAB54IHSh3r9bRaUVXt7oU6tCPnMS7UuBK9qccJ4ApjnwI44g

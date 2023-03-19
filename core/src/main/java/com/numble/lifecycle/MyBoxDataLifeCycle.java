@@ -20,7 +20,6 @@ public class MyBoxDataLifeCycle {
     private final MyBoxCollectPersister collectPersister;
 
     public AuthUserVO getApiUser(String userName) {
-        log.info("뭐" + seekPersister.getApiUser(userName));
         return seekPersister.getApiUser(userName);
     }
 
