@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RestController
-@RequestMapping(value = "/user/*")
+@RequestMapping(value = "/auth/*")
 @RequiredArgsConstructor
 public class AuthController {
 

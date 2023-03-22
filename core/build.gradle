@@ -12,10 +12,10 @@ repositories {
 
 dependencies {
 
-//    api 'commons-beanutils:commons-beanutils:1.9.4'
-//    api 'commons-io:commons-io:2.6'
-//    api 'commons-codec:commons-codec:1.10'
-//    api 'org.apache.commons:commons-configuration2:2.4'
+    api 'commons-beanutils:commons-beanutils:1.9.4'
+    api 'commons-io:commons-io:2.6'
+    api 'commons-codec:commons-codec:1.10'
+    api 'org.apache.commons:commons-configuration2:2.4'
 //    api 'com.github.ua-parser:uap-java:1.4.3'
 
     // mybatis 의존성
