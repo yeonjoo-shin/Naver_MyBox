@@ -1,6 +1,7 @@
 package com.numble.service;
 
 
+import com.numble.feign.FileApiInterface;
 import com.numble.domain.response.BusinessException;
 import com.numble.domain.response.StatusCode;
 import com.numble.utils.PropertyUtils;
@@ -15,6 +16,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.time.DateFormatUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -23,13 +25,31 @@ import org.springframework.web.multipart.MultipartFile;
 @RequiredArgsConstructor
 public class FileService {
 
+
+    private  FileApiInterface fileApiInterface;
+
     private final String token;
     private Random random;
 
-    public FileService() {
+    @Autowired
+    public FileService(FileApiInterface fileApiInterface) {
         this.token = PropertyUtils.getString("file.token");
         this.random = new SecureRandom();
+        this.fileApiInterface = fileApiInterface;
     }
+
+
+    public Response upload(File file) {
+        Response dataResponse = fileApiInterface.uploadFile(file,token);
+        if (dataResponse == null) {
+            log.info("file api fail");
+            return null;
+        }
+        int status = dataResponse.status();
+        log.info("file api success : " + status);
+        return dataResponse;
+    }
+
 
     public String getUploadFilePath(MultipartFile file) {
         return uploadFileAndGetPath(file);
@@ -50,7 +70,7 @@ public class FileService {
         File targetFile = new File(filePath);
         FileUtils.copyInputStreamToFile(fileStream,targetFile);
         // todo 버퍼
-        return  targetFile;
+        return targetFile;
     }
 
     public String setKeyFile(String fileName) {
@@ -61,14 +81,16 @@ public class FileService {
     }
 
     private String uploadAndGetPath(File file) {
-        String folder = PropertyUtils.getString("dir.upload.remote");
-        //Response response = upload(file);
-        return "";
+        //String folder = PropertyUtils.getString("dir.upload.local");
+        Response response = upload(file);
+        int status = response.status();
+        if (status != 200) {
+            log.info("file server fail : " + status);
+            return null;
+        }
+        return "http://175.125.177.207:12547" + "/" + file.getName();
     }
 
-//    public Response upload(File file) {
-//
-//    }
 
 }
 

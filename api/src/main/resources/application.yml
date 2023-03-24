@@ -29,6 +29,17 @@ server:
 active:
   server: local
   max-http-header-size: 0
+feign:
+  client:
+    config:
+      default:
+        loggerLevel: BASIC
+        # feign의 전역 timeout 설정 : 5초
+        connectTimeout: 200000
+        readTimeout: 200000
+        retryer:
+  file-post-api:
+    url: "http://175.125.177.207:12547"
 
 
 springfox:
@@ -41,6 +52,9 @@ springfox:
     swagger:
       v2:
         path: /v2/api-docs
+
+
+
 
 jwt:
   secret: A393XQDtRi5liCxxBHvPySyRyp7VtJ2ZL2zpoHAB54IHSh3r9bRaUVXt7oU6tCPnMS7UuBK9qccJ4ApjnwI44g
