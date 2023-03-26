@@ -25,6 +25,14 @@ Spring Security + JWT을 활용한 Token 방식 적용
 ## 파일 관리
 로컬 파일 서버 + Netflix feign 사용
 
+## 완성된 API 목록
+- user 관련
+  - 회원가입
+  - 로그인
+  - 유저 정보 조회
+- file 관련
+  - 파일 업로드
+
 ## CICD
 
 ## TDD
