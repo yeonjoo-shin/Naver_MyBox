@@ -6,8 +6,16 @@
         SELECT u.USER_ID as userName
              , u.SECRET_KEY as password
         FROM USER u
-        WHERE u.USER_ID = #{userName} and u.DELETE_YN = 'N'
+        WHERE u.USER_ID = #{userId} and u.DELETE_YN = 'N'
     </select>
 
+    <select id="getUserDetailInfo" resultType="UserInfoVO" parameterType="string">
+        SELECT u.USER_ID as userId
+            , u.SECRET_KEY as password
+            , u.USAGE as usages
+            , DELETE_YN as deleteYn
+        FROM USER u
+        WHERE u.USER_ID = #{userId}
+    </select>
 
 </mapper>

@@ -1,6 +1,7 @@
 package com.numble.lifecycle;
 
 import com.numble.domain.request.UserAuthReq;
+import com.numble.domain.response.UserInfoVO;
 import com.numble.persister.MyBoxCollectPersister;
 import com.numble.persister.MyBoxSeekPersister;
 import com.numble.vo.AuthUserVO;
@@ -19,11 +20,15 @@ public class MyBoxDataLifeCycle {
 
     private final MyBoxCollectPersister collectPersister;
 
-    public AuthUserVO getApiUser(String userName) {
-        return seekPersister.getApiUser(userName);
+    public AuthUserVO getApiUser(String userId) {
+        return seekPersister.getApiUser(userId);
     }
 
     public int registerUser(UserAuthReq userAuthReq) {
         return collectPersister.registerUser(userAuthReq);
+    }
+
+    public UserInfoVO getUserDetailInfo(String userId) {
+        return seekPersister.getUserDetailInfo(userId);
     }
 }

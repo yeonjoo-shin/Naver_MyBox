@@ -4,6 +4,7 @@ import com.numble.domain.request.UserAuthReq;
 import com.numble.domain.response.AuthTokenVO;
 import com.numble.domain.response.BusinessException;
 import com.numble.domain.response.StatusCode;
+import com.numble.domain.response.UserInfoVO;
 import com.numble.lifecycle.MyBoxDataLifeCycle;
 import com.numble.security.TokenProvider;
 import com.numble.vo.AuthUserVO;
@@ -59,12 +60,17 @@ public class SecurityService {
 
         return authTokenVO;
     }
-
-    public AuthUserVO getApiUser(String userName) {
-        return lifeCycle.getApiUser(userName);
+    // 로그인 usercheck
+    public AuthUserVO getApiUser(String userId) {
+        return lifeCycle.getApiUser(userId);
     }
 
+    // user 등록
     public int registerUser(UserAuthReq userAuthReq) {
         return lifeCycle.registerUser(userAuthReq);
+    }
+
+    public UserInfoVO getUserDetailInfo(String userId) {
+        return lifeCycle.getUserDetailInfo(userId);
     }
 }

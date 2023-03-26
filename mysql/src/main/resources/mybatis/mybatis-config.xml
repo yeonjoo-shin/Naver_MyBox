@@ -11,6 +11,7 @@
     <typeAliases>
         <typeAlias alias="AuthUserVO" type="com.numble.vo.AuthUserVO"/>
         <typeAlias alias="UserAuthReq" type="com.numble.domain.request.UserAuthReq"/>
+        <typeAlias alias="UserInfoVO" type="com.numble.domain.response.UserInfoVO"/>
     </typeAliases>
 
     <mappers>
