@@ -32,6 +32,9 @@ Spring Security + JWT을 활용한 Token 방식 적용
   - 유저 정보 조회
 - file 관련
   - 파일 업로드
+  
+## ERD
+issues에 추가
 
 ## CICD
 
