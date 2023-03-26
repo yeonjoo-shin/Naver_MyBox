@@ -17,6 +17,6 @@ public interface FileApiInterface {
 
     @RequestLine("POST /upload?token={token}")
     @Headers("Content-Type: multipart/form-data")
-    Response uploadFile(@Param("file")File file,@Param("token")String token);
+    Response uploadFile(@Param("file")File file,@Param("folder")String folder,@Param("token")String token);
 
 }

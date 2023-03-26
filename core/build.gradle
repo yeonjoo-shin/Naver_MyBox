@@ -16,7 +16,7 @@ dependencies {
     api 'commons-io:commons-io:2.6'
     api 'commons-codec:commons-codec:1.10'
     api 'org.apache.commons:commons-configuration2:2.4'
-//    api 'com.github.ua-parser:uap-java:1.4.3'
+    api 'com.github.ua-parser:uap-java:1.4.3'
 
     // mybatis 의존성
     implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.2'

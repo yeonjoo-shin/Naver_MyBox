@@ -39,8 +39,8 @@ public class FileService {
     }
 
 
-    public Response upload(File file) {
-        Response dataResponse = fileApiInterface.uploadFile(file,token);
+    public Response upload(File file,String folder) {
+        Response dataResponse = fileApiInterface.uploadFile(file,folder,token);
         if (dataResponse == null) {
             log.info("file api fail");
             return null;
@@ -51,16 +51,17 @@ public class FileService {
     }
 
 
-    public String getUploadFilePath(MultipartFile file) {
-        return uploadFileAndGetPath(file);
+    public String getUploadFilePath(MultipartFile file,String folder) {
+        return uploadFileAndGetPath(file,folder);
     }
 
-    public String uploadFileAndGetPath(MultipartFile file) {
+    public String uploadFileAndGetPath(MultipartFile file,String folder) {
         try {
             InputStream fileStream = file.getInputStream();
             File targetFile = createFileFromStream(fileStream,file.getOriginalFilename());
-            return uploadAndGetPath(targetFile);
+            return uploadAndGetPath(targetFile,folder);
         } catch (IOException e) {
+            e.printStackTrace();
             throw new BusinessException(StatusCode.FILE_UPLOAD_ERROR);
         }
     }
@@ -77,12 +78,12 @@ public class FileService {
         String date = DateFormatUtils.format(new Date(),"yyyyMMdd");
         int randInt = random.nextInt(100000);
         String ext = fileName.substring(fileName.lastIndexOf(".") +1);
-        return String.format("$s_$s.$s",date,randInt,ext);
+        return String.format("%s_%s.%s",date,randInt,ext);
     }
 
-    private String uploadAndGetPath(File file) {
-        //String folder = PropertyUtils.getString("dir.upload.local");
-        Response response = upload(file);
+    private String uploadAndGetPath(File file,String folder) {
+        String folderPath = PropertyUtils.getString("dir.upload.remote") + folder;
+        Response response = upload(file,folderPath);
         int status = response.status();
         if (status != 200) {
             log.info("file server fail : " + status);

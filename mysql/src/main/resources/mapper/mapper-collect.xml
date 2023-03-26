@@ -3,7 +3,7 @@
 <mapper namespace="com.numble.persister.MyBoxCollectPersister">
 
     <insert id="registerUser" parameterType="UserAuthReq">
-        INSERT INTO User (
+        INSERT INTO USER (
                           USER_ID,
                           SECRET_KEY,
                           REG_DATE
